@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<title>Digital Clock</title>
+<body>
+
+<div id="displayClock"></div>
+
+<script type="text/javascript">
+	function digitalClock () {
+
+		var hours, minutes, seconds;
+		var date = new Date();
+		
+		hours = date.getHours(); // 0 - 23
+		minutes = date.getMinutes(); // 0 - 59
+		seconds = date.getSeconds(); // 0 - 59
+
+		var session = "AM";
+
+
+		if (hours == 0) {
+        	hours = 12;
+    	}
+    
+    	if (hours > 12) {
+        	hours = hours - 12;
+        	session = "PM";
+    	} 
+
+		hours = hours < 10 ? '0' + hours : hours;
+		minutes = minutes < 10 ? '0' + minutes : minutes;
+		seconds = seconds < 10 ? '0' + seconds : seconds;
+
+		var time = hours + ':' + minutes + ':' + seconds + " " + session;
+	
+		document.getElementById('displayClock').innerHTML = time;
+	}
+
+	setInterval(function () { 
+		digitalClock();
+ 	}, 1000);
+	
+</script>
+
+</body>
+</html> 
